@@ -39,10 +39,6 @@ resource "google_container_node_pool" "primary_nodes" {
       "https://www.googleapis.com/auth/monitoring",
     ]
 
-    labels = {
-      env = "dev"
-    }
-
     machine_type = "n1-standard-1"
     preemptible  = true
     #service_account = google_service_account.mysa.email
@@ -50,6 +46,7 @@ resource "google_container_node_pool" "primary_nodes" {
     metadata = {
       disable-legacy-endpoints = "true"
     }
+    tags = ["ssh","nginx"]
   }
 }
 
